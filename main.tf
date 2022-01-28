@@ -4,5 +4,5 @@ resource "aws_iam_role" "roles" {
   }
   name               = "${var.user-prefix}-${each.key}"
   assume_role_policy = each.value[1][0]
-  managed_policy_arns = [for policy in each.value[0]: "arn:aws:iam::aws:policy/${policy}"]
+  managed_policy_arns = [for policy in each.value[0]: "${policy}"]
 }
